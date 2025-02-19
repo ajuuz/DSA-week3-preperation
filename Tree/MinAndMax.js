@@ -78,6 +78,17 @@ class TreeMinMax{
         return curr.value;
     }
 
+
+    minRecursive(root){
+        if(this.isEmpty()) return -1;
+        
+        if(!root.left){
+            return root.value;
+        }else{
+           return this.minRecursive(root.left)
+        }
+    }
+
     max(){
         if(this.isEmpty()) return -1;
         let curr = this.root
@@ -87,6 +98,15 @@ class TreeMinMax{
         return curr.value;
     }
     
+    maxRecursive(root){
+        if(this.isEmpty()) return -1;
+        
+        if(!root.right){
+            return root.value;
+        }else{
+          return  this.minRecursive(root.right)
+        }
+    }
 
 
     isEmpty(){
@@ -101,5 +121,7 @@ bst2.insert(5)
 bst2.insert(15)
 bst2.insert(3)
 bst2.insert(7)
-console.log(bst2.min())
-console.log(bst2.max())
+console.log(bst2.minRecursive(bst2.root))
+console.log(bst2.maxRecursive(bst2.root))
+console.log(bst2.min(bst2.root))
+console.log(bst2.max(bst2.root))
