@@ -1,3 +1,5 @@
+//Here we are going to find the minimum and maximum value in tree
+
 // Types of Data Structure
 
 // Linear Data structure - elements arranged in a linear sequence order . example - stack , queue , linked list , array
@@ -14,7 +16,7 @@ class Node{
 }
 
 
-class BinarySearchTree{
+class TreeMinMax{
     constructor(){
         this.root = null
     }
@@ -66,6 +68,24 @@ class BinarySearchTree{
         }
     }
 
+
+    min(){
+        if(this.isEmpty()) return -1;
+        let curr = this.root
+        while(curr.left){
+            curr = curr.left;
+        }
+        return curr.value;
+    }
+
+    max(){
+        if(this.isEmpty()) return -1;
+        let curr = this.root
+        while(curr.right){
+            curr = curr.right;
+        }
+        return curr.value;
+    }
     
 
 
@@ -75,12 +95,11 @@ class BinarySearchTree{
 
 }
 
-const bst = new BinarySearchTree();
-bst.insert(100)
-bst.insert(20)
-bst.insert(10)
-bst.insert(30)
-bst.insert(200)
-bst.insert(150)
-bst.insert(300)
-bst.inorder(bst.root)
+const bst2 = new TreeMinMax();
+bst2.insert(10)
+bst2.insert(5)
+bst2.insert(15)
+bst2.insert(3)
+bst2.insert(7)
+console.log(bst2.min())
+console.log(bst2.max())
