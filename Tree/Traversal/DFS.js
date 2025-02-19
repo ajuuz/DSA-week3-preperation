@@ -1,8 +1,8 @@
-// Types of Data Structure
+// There and two types of traversal in Tree;
 
-// Linear Data structure - elements arranged in a linear sequence order . example - stack , queue , linked list , array
+// DFS - traversal in which explore start from the root and move as far as possible in each branches before backtracking 
 
-//Non Linear Data structure - elements are arranged in a non linear sequence . example tree in a heirarchical order . graph
+// there are 3 ways of DFS traversal : - 1) Inorder 2)PreOrder 3)PostOrder
 
 
 class Node{
@@ -66,13 +66,29 @@ class BinarySearchTree{
         }
     }
 
+    
     inorder(root){
-        if(root===null){
-            return
+        if(root){
+            this.inorder(root.left);
+            console.log(root.value);
+            this.inorder(root.right)
         }
-        console.log(root.value);
-        this.inorder(root.left)
-        this.inorder(root.right)
+    }
+
+    preOrder(root){
+        if(root){
+            console.log(root.value);
+            this.preOrder(root.left)
+            this.preOrder(root.right)
+        }
+    }
+
+    postOrder(root){
+        if(root){
+            this.postOrder(root.left)
+            this.postOrder(root.right)
+            console.log(root.value)
+        }
     }
 
 
