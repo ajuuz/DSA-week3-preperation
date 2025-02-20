@@ -1,5 +1,9 @@
 // Now we have to insert a element to the heap
 
+// we have to push the new value to the heap.: - 
+// There are two situation may be it satisfies min or max heap requirement. 
+// IF not satisfiying we have to heapify up  to check if the immediate parent is greater or smaller than the current element .
+// if not swap until it reaches the index 0 or root element
 
 class Heap2{
     constructor(){
