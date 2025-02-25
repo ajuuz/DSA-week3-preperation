@@ -1,0 +1,1 @@
+&& !queue.includes(adjascentVertex

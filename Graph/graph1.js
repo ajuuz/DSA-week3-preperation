@@ -23,6 +23,32 @@ class Graph1{
         this.adjascencyList[vertex2].push(vertex1)
     }
 
+    hasEdge(vertex1,vertex2){
+        if(!this.adjascencyList[vertex1] || !this.adjascencyList[vertex2]) return false;
+
+        if(this.adjascencyList[vertex1].includes(vertex2)) return true;
+        return false;
+    }
+
+    display(){
+        for(let vertex in this.adjascencyList){
+            console.log(vertex+" -> "+this.adjascencyList[vertex])
+        }
+    }
+
+    removeVertex(vertex){
+        if(!this.adjascencyList[vertex]) return
+        
+        for(let adjascentVertex of this.adjascencyList[vertex]){
+            this.removeEdges(vertex,adjascentVertex);
+        }
+        delete this.adjascencyList[vertex]
+    }
+
+    removeEdges(vertex1,vertex2){
+        this.adjascencyList[vertex1] = this.adjascencyList[vertex1].filter((vertex)=>vertex!==vertex2)
+        this.adjascencyList[vertex2] = this.adjascencyList[vertex2].filter((vertex)=>vertex!==vertex1)
+    }
 
 }
 
@@ -33,5 +59,5 @@ graph1.addVertex("B")
 graph1.addVertex("C")
 graph1.addEdge("A","B")
 graph1.addEdge("B","C")
-
-console.log(graph1.adjascencyList)
+graph1.removeVertex("B")
+graph1.display()
