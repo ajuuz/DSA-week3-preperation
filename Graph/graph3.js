@@ -45,22 +45,39 @@ class Graph3{
 
         console.log(visited)
     }
+
+
+    dfsTraversal(start){
+        const stack = [start];
+        const visited = new Set();
+        while(stack.length){
+           const vertex = stack.pop()
+           for(let adjascentVertex of this.adjascencyList[vertex]){
+               if(!visited.has(adjascentVertex) && !stack.includes(adjascentVertex))
+               {
+                    stack.push(adjascentVertex)
+               }
+           }
+           visited.add(vertex);
+        }
+        console.log(visited);
+    }
 }
 
 
 const graph3 = new Graph3();
 ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"].forEach(v => graph3.addVertex(v));
 
+graph3.addVertex("A");
+graph3.addVertex("B");
+graph3.addVertex("C");
+graph3.addVertex("D");
+graph3.addVertex("E");
+
 graph3.addEdge("A", "B");
 graph3.addEdge("A", "C");
-graph3.addEdge("A", "D");
-graph3.addEdge("B", "E");
-graph3.addEdge("B", "F");
-graph3.addEdge("C", "G");
-graph3.addEdge("D", "H");
-graph3.addEdge("F", "I");
-graph3.addEdge("F", "J");
-graph3.addEdge("G", "J");
-graph3.addEdge("G", "K");
+graph3.addEdge("B", "D");
+graph3.addEdge("C", "E");
 
 graph3.bfsTraversal("A")
+graph3.dfsTraversal("A")
